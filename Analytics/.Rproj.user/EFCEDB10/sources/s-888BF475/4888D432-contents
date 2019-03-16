@@ -1,0 +1,126 @@
+---
+title: "Movie Reviews "
+author: "Austin Halvorsen, Foster Nuffer, Guilherme Cidade"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+highlighter: prettify
+assets:
+  css:
+    - "http://fonts.googleapis.com/css?family=Raleway:300"
+    - "http://fonts.googleapis.com/css?family=Oxygen"
+output: 
+  html_document:
+    theme: flatly
+    highlight: tango
+    code_folding: hide
+---
+
+<style>
+body {
+  font-family: "Oxygen", sans-serif;
+  font-size: 14px;
+}
+
+h1,h2,h3,h4 {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+}
+
+h4 {
+  background-color: #fcfcfc;
+  color: #17B491;
+  padding: 10px 15px;
+}
+
+</style>
+
+
+```{r load_library, include=FALSE}
+# Use this R-Chunk to load your libraries!
+library(mosaic)
+
+```
+
+```{r load_data, include=FALSE}
+# Use this R-Chunk to load your datasets!
+
+```
+
+## Our Project {.tabset .tabset-fade .tabset-pill}
+
+Did you know that Roger Ebert (movie critic) didn’t like Footloose?  He called it “seriously confused”.  That didn’t matter to the audiences  They saw it and loved it and many still do.  Do initial reviews of a movie tell how it will be viewed over time?  Do the reviews of a movie change over time?  These are questions we will try to get answers to.
+
+Explore the tabs below from week to week to see what work was done to arrive at our final analysis.
+
+### Project Details (Week 7)
+
+#### Introduction
+
+1. *Determine if movie reviews, positiveness and negativeness,  change over time:* Using historical movie reviews data, determine if initial reviews of a movie will be telling of future success or failure.
+
+2.  *Collaborate effectively as a group for a common goal:* Using collaboration tools of Facebook Messenger, Google Drive and email for communication, we are striving for effective communication to achieve our groups proposed goal.
+
+#### The Problem
+
+The opportunity that we are investigating is that we could be able to tell sooner if a motion picture will be a hit sooner based of the feedback received. This information could help identify features of a movie that make it more likely to become a classic or help increase revenue over time.
+
+#### Potential Dataset
+
+We will be pulling information from IMDB and rottentomatoes via web scraping. These are the links to the websites: www.imdb.com and www.rottentomatoes.com 
+
+#### Design Document
+
+This design document outlines the 
+
+#### Tools
+
+For this project, we are using some new tools to do our analysis. We will be using R for our data analysis. We are using ‘webscraper’ to collect data from the internet and excel to compile and some reporting for our final analysis.
+
+#### Risks
+
+Some of the risks that we are likely to encounter with this project are that we are using new programs that we have had limited exposure to. This may inhibit the depth of our analysis that we are able to perform. Another risk is that getting full accurate data of the internet may prove challenging if we cannot access the correct sources. The other challenge is that we are working across time zones, so communication is critical and may prove hard to coordinate with varying schedules.
+
+#### Document/Explanation
+
+### Week 8
+
+#### Project Update
+
+#### Deviations
+
+#### Tool Learning
+
+#### Cleaning Methods
+
+#### Profiling Examples
+
+#### Document/Explanation
+
+### Week 9
+
+#### Project Update
+
+#### Deviations
+
+#### Tool Learning
+
+#### Patterns - Outlier - Visualization
+
+#### Profiling Examples
+
+#### Document/Explanation
+
+### Week 10
+
+#### Project Update
+
+#### Deviations
+
+#### Tool Learning
+
+#### Optimization  - Forecasting - Predicting Method
+
+#### Profiling Examples
+
+#### Document/Explanation
+
+

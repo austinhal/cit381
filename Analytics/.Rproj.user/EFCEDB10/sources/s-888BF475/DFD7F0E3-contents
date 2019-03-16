@@ -1,0 +1,120 @@
+---
+title: "My Simple Logistic Regression - Let's go on a Cruise!"
+date: "June 30th, 2018"
+output: 
+  html_document:
+    theme: flatly
+    highlight: tango
+    code_folding: hide
+---
+
+<!-- Find some data of interest to you that can be analyzed with a logistic regression. Complete your Logistic Regression Analysis using this file. 
+
+Hint, run the command 
+
+> data() 
+
+in your Console to see available datasets in R that you could use for this Analysis. You are also welcome to collect data yourself, or find other available datasets online for this Analysis. Just be careful to not use anyone else's "analysis" for this Analysis. Also, no conducting surveys unless you have IRB approval to do so. -->
+
+```{r, include=FALSE}
+library(mosaic)
+library(ResourceSelection) 
+library(carData)
+```
+
+## Introduction {.tabset .tabset-fade .tabset-pill}
+
+Does your age have anything to do with your odds of surviving the accident of the Titanic? In the tragedy that occurred at sea in 1912, a total of [1517 passengers and crew](http://www.titanicuniverse.com/titanic-survivors) perished in the horrific accident. A total loss of about 68% of those on board. Would being older or younger given you a better chance of making it back to land? Let's see!
+
+### Background 
+
+As you are more than likely familiar with, the Titanic was a famous cruise ship that struck an iceberg and sunk on its maiden, and only, voyage in 1912. Set to make its way from Ireland to New York City, it served as a landmark in what should have been a technological marvel at the time. Most called it, 'the unsinkable ship' and wanted to be apart of its maiden voyage. Little did they know, more than half would lose their life on that journey. So, if you knew you boarding a sinking ship, would you like to know if your age could help predict your odds of surviving?
+
+Take a look at a sample of the data set.
+
+```{r}
+kableExtra::kable(sample_n(TitanicSurvival, 10, replace=F), "html", col.names=c('Survived', 'Sex', 'Age', 'Class')) %>% 
+  kableExtra::kable_styling(bootstrap_options=c('striped', 'hover'), full_width=T, position='center')
+```
+
+We want to model the odds of survival based on various ages. We will use the logistic regression model as follows:
+$$
+  P(Y_i = 1|x_i) = \frac{e^{\beta_0+\beta_1 x_i}}{1+e^{\beta_0 + \beta_1 x_i}} = \pi_i
+$$
+where the observations in $i$ are:
+
+* $Y_i = yes$ denotes surviving during the sinking of the Titanic
+* $Y_1 = no$ denotes not surviving
+* $X_i$ is the age of the passenger on-board
+
+We can interpret these where a yes is a `1` and a no is a `0`, therefore, if $\beta_1$ is zero, than age has affect on the probability of surviving in the Titanic. So, we could test the hypothesis: 
+
+$$
+  H_0: \beta_1 = 0 \\
+  H_a: \beta_1 \neq 0
+$$
+
+----
+
+### Analysis
+
+We are going to take a look to see if our model will fit the data. 
+
+----
+
+#### Fitting the Model {}
+
+```{r}
+titanic.glm <- glm((survived == "yes") ~ age, data=TitanicSurvival, family=binomial)
+pander::pander(summary(titanic.glm))
+```
+
+Here, we find that our intercept for our line is -0.1365 and our slope ($b_1 = -0.007899$). This tells that, in essence, as your age increases, your odds of survival decrease. We also need to take a look at our P-Value, which will essentially tell us if our hypothesis will work or not. Here, we get a value of $p = 0.07306$, which shows that we have insufficient evidence to reject our $H_0$ hypothesis. In other words, it does not appear that age had anything to do with being able to survive during the sinking of the Titanic.
+
+----
+
+#### Visiualizing the Model
+
+We can confirm this in our visualization of the data.
+
+```{r}
+palette(c("darkred", "darkblue"))
+plot((survived == "yes") ~ age, data=TitanicSurvival,
+     main= "Surviving the Titanic",
+     ylab="Probability of Surviving", 
+     xlab="Age", pch=20, col=survived)
+curve(exp(titanic.glm[[1]][1]+titanic.glm[[1]][2]*x)/(1+exp(titanic.glm[[1]][1]+titanic.glm[[1]][2]*x)), from=0, to=80, add=T)
+```
+
+As we can see in the plot, we don't really have a logistic (or logarithmic) line, in fact, it appears rather linear. This could be an indication that our two variables do not have a direct relation or influence to each other.
+
+----
+
+#### Diagnosing the Model
+
+While we were able to demonstrate with the present data that no relationship exists between age and survival, we will continue to see if this test was good for logistic regression. Since many of the passengers were likely to be the same age, we will have multiple repeated x values. This means will will conduct a Chi-Squared Distribution test to see if the data is a good fit. Using the results from the summary above, we run our test.
+
+```{r}
+pchisq(1411.4, 1044, lower.tail=F)
+```
+
+With this test, we get a low value claiming that we can use logistic regression. 
+Continue onto the last tab for the interpretation and conclusion.
+
+
+### Conclusion 
+
+
+Since we failed to reject our hypothesis, we can't really say there is a strong enough relationship between age and survival. However, we can continue to look at the data and see for that $e^{\beta_1} = e^{-0.007899} \approx 0.99213$. This means that for each increase of age by 1, your odds of survival decreased by a factor of $\approx$ 0.99213. For me, I am 24 years old. Using this model, I would have an approximate probability of 0.4192 of survival on the titanic, not exactly a great odd of survival.
+
+```{r include=FALSE}
+pander::pander(predict(titanic.glm, data.frame(age=24), type='response', title="Odds of Survival when 24 years old"))
+```
+
+-------------------------------
+ Survival odds if 24 years old    
+-------------------------------
+ 0.4192 
+-------------------------------
+
+Moral of the story: be careful when anyone claims something is 'un' something. Nothing is fail safe, and almost nothing in life is guaranteed.

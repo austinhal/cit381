@@ -1,0 +1,46 @@
+reviews <- reviews %>% 
+  mutate(
+    SentimentType = case_when(
+      reviews$Sentiment[[4]] < 0 ~ "Bad",
+      reviews$Sentiment[[4]] > 0 ~ "Good",
+      TRUE ~ "NA"
+    )) 
+
+reviews %>% group_by(MovieTitle) %>% 
+  ggplot(aes(ReviewDate, Sentiment[[4]])) + 
+  geom_point(aes(color=SentimentType)) + 
+  facet_grid(MovieTitle~.) +
+  labs(
+    x = "Date",
+    y = "Sentiment",
+    color = "Sentiment Result"
+  ) +
+  theme(legend.position = "bottom")
+
+reviews %>% group_by(MovieTitle, ReviewYear, SentimentType) %>% 
+  summarise(count = n()) %>% 
+  ggplot(aes(ReviewYear, count)) +
+  geom_col(aes(fill = SentimentType)) +
+  facet_grid(MovieTitle~.) +
+  coord_flip() +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  labs(
+    x = "Number of Reviews",
+    y = "Year",
+    fill = 'Sentiment of Review'
+  )
+
+reviews$ReviewDay <- factor(reviews$ReviewDay, levels= c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"))
+
+reviews %>% group_by(MovieTitle, ReviewDay, SentimentType) %>%
+  summarize(count=n()) %>% 
+  ggplot(aes(ReviewDay, count, fill = SentimentType)) +
+  geom_col() + 
+  labs( 
+    x = 'Day of Review',
+    y = 'Number of Reviews',
+    fill = 'Sentiment of Review'
+  ) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
