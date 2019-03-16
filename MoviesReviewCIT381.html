@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Austin Halvorsen, Foster Nuffer, Guilherme Cidade" />
+<meta name="author" content="Austin Halvorsen, Foster Nuffer, Guilherme (Gui) Cidade" />
 
 <meta name="date" content="2019-03-16" />
 
@@ -186,7 +186,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Movie Reviews</h1>
-<h4 class="author"><em>Austin Halvorsen, Foster Nuffer, Guilherme Cidade</em></h4>
+<h4 class="author"><em>Austin Halvorsen, Foster Nuffer, Guilherme (Gui) Cidade</em></h4>
 <h4 class="date"><em>March 16, 2019</em></h4>
 
 </div>
@@ -209,6 +209,12 @@ h4 {
   padding: 10px 15px;
 }
 
+h5 {
+  color:#b45317;
+  text-align: center;
+  font-size: 18px;
+}
+
 </style>
 <div id="our-project" class="section level2 tabset tabset-fade tabset-pill">
 <h2>Our Project</h2>
@@ -229,11 +235,86 @@ h4 {
 </div>
 <div id="potential-dataset" class="section level4">
 <h4>Potential Dataset</h4>
-<p>We will be pulling information from IMDB and rottentomatoes via web scraping. These are the links to the websites: www.imdb.com and www.rottentomatoes.com</p>
+<p>We will be pulling information from IMDB and rottentomatoes via web scraping. These are the links to the websites: <a href="www.imdb.com">IMDB</a> and <a href="www.rottentomatoes.com">rottentomatoes</a>.</p>
 </div>
 <div id="design-document" class="section level4">
 <h4>Design Document</h4>
-<p>This design document outlines the</p>
+<p>This design document outlines the deliverables and what week they will be completed in. See a summary of the weeks listed below.</p>
+<div id="week-7" class="section level5">
+<h5>Week 7</h5>
+<ol style="list-style-type: decimal">
+<li>The deliverable for this week is this document. Provide an outline of all aspects of the project with a goal of the final deliverable. Describe the processes that will be used, possible tools and outcomes.</li>
+</ol>
+</div>
+<div id="week-8" class="section level5">
+<h5>Week 8</h5>
+<p><strong>A Usable dataset</strong></p>
+<ul>
+<li><strong>Gathering</strong>:
+<ul>
+<li>We selected a total of six (6) movies via random sample. We will select from two different years, they must be longer than 60 minues and have a popularity of greater than 1000 (IMdB)</li>
+<li>The movies we sampled were: <strong>American Pysco, Anacondas, Dodgeball, The Polar Express, The Adventures of Rocky and Bullwinkle</strong>, and <strong>Wonderboys</strong></li>
+</ul></li>
+<li><strong>Tools</strong>:
+<ul>
+<li>We will be using webscraper and R for our analysis</li>
+</ul></li>
+<li><strong>Scrape Data</strong>:
+<ul>
+<li>Using webscraper, we pulled all the text reviews and dates of reviews for each of our movies.</li>
+</ul></li>
+<li><strong>Cleaning</strong>:
+<ul>
+<li>Normalizing dates: <strong>Austin</strong></li>
+<li>Split Date into columns: <strong>Austin</strong></li>
+<li>Add Grouping by dates: <strong>Foster</strong></li>
+<li>Clean the text:
+<ol style="list-style-type: decimal">
+<li>Remove Punctuation: <strong>Foster</strong></li>
+<li>Add word count: <strong>Gui</strong></li>
+<li>Change to all lowercase: <strong>Gui</strong></li>
+</ol></li>
+</ul></li>
+<li><strong>Profiling Data</strong>:
+<ol style="list-style-type: decimal">
+<li>Check basic data integrity</li>
+<li>Find out whether existing data can be easily used for other purposes</li>
+<li>Improve the ability to search data by tagging it with keywords, descriptions, or assigning it to a category</li>
+<li>Assess data quality, including whether the data conforms to particular standards or pattern</li>
+<li>Assess the risk involved in integrating data in new applications, including the challenges of joins</li>
+<li>Discover metadata of the source database, including value patterns and distributions, key candidates, foreign-key candidates, and functional dependencies</li>
+<li>Assess whether known metadata accurately describes the actual values in the source database</li>
+</ol></li>
+<li><strong>Report Learnings</strong>:
+<ul>
+<li>Individually report on what you learned from the previous week.</li>
+</ul></li>
+</ul>
+</div>
+<div id="week-9" class="section level5">
+<h5>Week 9</h5>
+<p><strong>Pattern and Visualization</strong></p>
+<ol style="list-style-type: decimal">
+<li>Pro/Con list for patterning and visualization tools: <strong>All</strong></li>
+<li>Do pattern and visualizing on dataset</li>
+<li>Record the learning excerpts about Patterning and Visualizing</li>
+<li>Report Learnings and reply to others</li>
+</ol>
+</div>
+<div id="week-10" class="section level5">
+<h5>Week 10</h5>
+<p><strong>Optimizing, Forecasting, Predicting Deliverables</strong></p>
+<ol style="list-style-type: decimal">
+<li>Research/learn about Optimizing, Forecasting, Predicting</li>
+<li>Apply learnings to the data set.
+<ol style="list-style-type: lower-roman">
+<li>Team members need to contribute at least 1 optimization, forecasting, or predicting method/example</li>
+<li>Explain any insights you get from this method.</li>
+<li>Report pros and cons of the tools used for Optimizing, Forecasting or Predicting method/examples</li>
+<li>Record learnings experiences</li>
+</ol></li>
+</ol>
+</div>
 </div>
 <div id="tools" class="section level4">
 <h4>Tools</h4>
@@ -245,30 +326,43 @@ h4 {
 </div>
 <div id="documentexplanation" class="section level4">
 <h4>Document/Explanation</h4>
+<p>All of the ddocumentation is detailed within this document.</p>
 </div>
 </div>
-<div id="week-8" class="section level3">
+<div id="week-8-1" class="section level3">
 <h3>Week 8</h3>
 <div id="project-update" class="section level4">
 <h4>Project Update</h4>
+<p>We have posted all of our week 7 work and have continued scraping and collecting our data for the following weeks.</p>
 </div>
 <div id="deviations" class="section level4">
 <h4>Deviations</h4>
+<p>We had to change some movie years since some reviews for movies did not exist in our original year, so we choose movies from years 2000 and 2004.</p>
 </div>
 <div id="tool-learning" class="section level4">
 <h4>Tool Learning</h4>
+<p><strong>Gui</strong></p>
+<p>Pulling the data from Rotten Tomatoes and imdb was difficult. I ran into issues with pagination on the web sites. I also ran into an issue with my CSV files. They didn’t import into Excel correctly.</p>
+<p>Another frustration was switching from web scraper to grepsr. The second tool was simpler, but the output gave me the csv issue.</p>
+<p><strong>Foster</strong></p>
+<p>I spent a lot of time delving into web scraper. A lot more time that I expected. Out new tool grepsr worked, but I felt like switching back to web scraper since is was more powerful and free! In the end I learned how to deal with two kinds of pagination. A page forward button and a “Load More” button. I also had to learn how to group items to form an element so that the dates came with the correct review.</p>
+<p><strong>Austin</strong></p>
+<p>From our group, I believe that we learned that communication and setting specific time to meet is extremely helpful. Following up is also very helpful as well so that we make sure all our points get covered for the week.</p>
+<p>Profiling our data: To make sure that our data was complete and accurate, we used data directly from the source to compile our dataset. Since we didn’t perform any transformations or complex joins, we feel assured that our data is usable for purposes of this analysis.</p>
+<p><strong>All</strong></p>
+<p>We had an issue with available data. Originally, we expected to get movie data from Rotten Tomatoes for a 1980 movie. The problem was that Rotten Tomatoes was not started until 1998. To solve this, we changed the movies we used to a year after Rotten Tomatoes was started.</p>
+<p>From this week, we performed a lot a cleaning on our data. We formatted the dates in our dataset and split them up to get month day and year values for different grouping methods. We also cleaned up the text in order to do sentiment analysis on our data. We also compiled our text reviews so that we had it neat and orderly for our analysis.</p>
 </div>
 <div id="cleaning-methods" class="section level4">
 <h4>Cleaning Methods</h4>
-</div>
-<div id="profiling-examples" class="section level4">
-<h4>Profiling Examples</h4>
+<p>We used excel to clean the majority of our data.</p>
 </div>
 <div id="documentexplanation-1" class="section level4">
 <h4>Document/Explanation</h4>
+<p>All documentation is contained within this docuement.</p>
 </div>
 </div>
-<div id="week-9" class="section level3">
+<div id="week-9-1" class="section level3">
 <h3>Week 9</h3>
 <div id="project-update-1" class="section level4">
 <h4>Project Update</h4>
@@ -278,18 +372,23 @@ h4 {
 </div>
 <div id="tool-learning-1" class="section level4">
 <h4>Tool Learning</h4>
+<p>Using new tools is a challenge, we discovered the following when using our analysis tool to run our reports.</p>
+<ul>
+<li><p><strong>R:</strong> It is really good at creating charts and running functions, but not everyone on our team knew how to use it and it made explaining parts of the tool difficult.</p></li>
+<li><p><strong>Excel:</strong></p></li>
+</ul>
 </div>
 <div id="patterns---outlier---visualization" class="section level4">
 <h4>Patterns - Outlier - Visualization</h4>
 </div>
-<div id="profiling-examples-1" class="section level4">
+<div id="profiling-examples" class="section level4">
 <h4>Profiling Examples</h4>
 </div>
 <div id="documentexplanation-2" class="section level4">
 <h4>Document/Explanation</h4>
 </div>
 </div>
-<div id="week-10" class="section level3">
+<div id="week-10-1" class="section level3">
 <h3>Week 10</h3>
 <div id="project-update-2" class="section level4">
 <h4>Project Update</h4>
@@ -303,7 +402,7 @@ h4 {
 <div id="optimization---forecasting---predicting-method" class="section level4">
 <h4>Optimization - Forecasting - Predicting Method</h4>
 </div>
-<div id="profiling-examples-2" class="section level4">
+<div id="profiling-examples-1" class="section level4">
 <h4>Profiling Examples</h4>
 </div>
 <div id="documentexplanation-3" class="section level4">

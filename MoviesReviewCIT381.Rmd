@@ -1,6 +1,6 @@
 ---
 title: "Movie Reviews "
-author: "Austin Halvorsen, Foster Nuffer, Guilherme Cidade"
+author: "Austin Halvorsen, Foster Nuffer, Guilherme (Gui) Cidade"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 highlighter: prettify
 assets:
@@ -29,6 +29,12 @@ h4 {
   background-color: #fcfcfc;
   color: #17B491;
   padding: 10px 15px;
+}
+
+h5 {
+  color:#b45317;
+  text-align: center;
+  font-size: 18px;
 }
 
 </style>
@@ -65,11 +71,65 @@ The opportunity that we are investigating is that we could be able to tell soone
 
 #### Potential Dataset
 
-We will be pulling information from IMDB and rottentomatoes via web scraping. These are the links to the websites: www.imdb.com and www.rottentomatoes.com 
+We will be pulling information from IMDB and rottentomatoes via web scraping. These are the links to the websites: [IMDB](www.imdb.com) and [rottentomatoes](www.rottentomatoes.com).
 
 #### Design Document
 
-This design document outlines the 
+This design document outlines the deliverables and what week they will be completed in. See a summary of the weeks listed below.
+
+##### Week 7 
+
+1. The deliverable for this week is this document. Provide an outline of all aspects of the project with a goal of the final deliverable. Describe the processes that will be used, possible tools and outcomes.
+
+##### Week 8
+
+__A Usable dataset__
+
+* __Gathering__:
+    - We selected a total of six (6) movies via random sample. We will select from two different years, they must be longer than 60 minues and have a popularity of greater than 1000 (IMdB)
+    - The movies we sampled were: __American Pysco, Anacondas, Dodgeball, The Polar Express, The Adventures of Rocky and Bullwinkle__, and __Wonderboys__
+* __Tools__:
+    - We will be using webscraper and R for our analysis
+* __Scrape Data__:
+    - Using webscraper, we pulled all the text reviews and dates of reviews for each of our movies. 
+* __Cleaning__:
+    - Normalizing dates: __Austin__
+    - Split Date into columns: __Austin__
+    - Add Grouping by dates: __Foster__
+    - Clean the text:
+        1. Remove Punctuation: __Foster__
+        2. Add word count: __Gui__
+        3. Change to all lowercase: __Gui__ 
+* __Profiling Data__:
+    1. Check basic data integrity 
+    2. Find out whether existing data can be easily used for other purposes
+    3. Improve the ability to search data by tagging it with keywords, descriptions, or assigning it to a category
+    4. Assess data quality, including whether the data conforms to particular standards or pattern
+    5. Assess the risk involved in integrating data in new applications, including the challenges of joins
+    6. Discover metadata of the source database, including value patterns and distributions, key candidates, foreign-key candidates, and functional dependencies
+    7. Assess whether known metadata accurately describes the actual values in the source database
+* __Report Learnings__:
+    - Individually report on what you learned from the previous week.
+
+##### Week 9
+
+__Pattern and Visualization__
+
+1. Pro/Con list for patterning and visualization tools: __All__
+2. Do pattern and visualizing on dataset
+3. Record the learning excerpts about Patterning and Visualizing
+4. Report Learnings and reply to others
+
+##### Week 10
+
+__Optimizing, Forecasting, Predicting Deliverables__
+
+1. Research/learn about Optimizing, Forecasting, Predicting
+2. Apply learnings to the data set.
+     i. Team members need to contribute at least 1 optimization, forecasting, or predicting method/example
+     ii. Explain any insights you get from this method.
+     iii. Report pros and cons of the tools used for Optimizing, Forecasting or Predicting method/examples
+     iv. Record learnings experiences
 
 #### Tools
 
@@ -81,27 +141,65 @@ Some of the risks that we are likely to encounter with this project are that we 
 
 #### Document/Explanation
 
+All of the ddocumentation is detailed within this document.
+
 ### Week 8
 
 #### Project Update
 
+We have posted all of our week 7 work and have continued scraping and collecting our data for the following weeks.
+
 #### Deviations
+
+We had to change some movie years since some reviews for movies did not exist in our original year, so we choose movies from years 2000 and 2004. 
 
 #### Tool Learning
 
+__Gui__
+
+Pulling the data from Rotten Tomatoes and imdb was difficult.  I ran into issues with pagination on the web sites.  I also ran into an issue with my CSV files.  They didn’t import into Excel correctly.
+
+Another frustration was switching from web scraper to grepsr.  The second tool was simpler, but the output gave me the csv issue.
+
+__Foster__
+
+I spent a lot of time delving into web scraper.  A lot more time that I expected.  Out new tool grepsr worked, but I felt like switching back to web scraper since is was more powerful and free!  In the end I learned how to deal with two kinds of pagination.  A page forward button and a “Load More” button.  I also had to learn how to group items to form an element so that the dates came with the correct review.
+
+__Austin__
+
+From our group, I believe that we learned that communication and setting specific time to meet is extremely helpful. Following up is also very helpful as well so that we make sure all our points get covered for the week.
+
+Profiling our data: To make sure that our data was complete and accurate, we used data directly from the source to compile our dataset. Since we didn’t perform any transformations or complex joins, we feel assured that our data is usable for purposes of this analysis.
+
+__All__
+
+We had an issue with available data.  Originally, we expected to get movie data from Rotten Tomatoes for a 1980 movie.  The problem was that Rotten Tomatoes was not started until 1998.  To solve this, we changed the movies we used to a year after Rotten Tomatoes was started.
+
+From this week, we performed a lot a cleaning on our data. We formatted the dates in our dataset and split them up to get month day and year values for different grouping methods. We also cleaned up the text in order to do sentiment analysis on our data. We also compiled our text reviews so that we had it neat and orderly for our analysis.
+
 #### Cleaning Methods
 
-#### Profiling Examples
+We used excel to clean the majority of our data. 
 
 #### Document/Explanation
+
+All documentation is contained within this docuement.
 
 ### Week 9
 
 #### Project Update
 
+
+
 #### Deviations
 
 #### Tool Learning
+
+Using new tools is a challenge, we discovered the following when using our analysis tool to run our reports.
+
+* __R:__ It is really good at creating charts and running functions, but not everyone on our team knew how to use it and it made explaining parts of the tool difficult.
+
+* __Excel:__ 
 
 #### Patterns - Outlier - Visualization
 
