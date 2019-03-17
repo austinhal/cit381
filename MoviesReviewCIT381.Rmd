@@ -1,7 +1,7 @@
 ---
 title: "Movie Reviews "
 author: "Austin Halvorsen, Foster Nuffer, Guilherme (Gui) Cidade"
-date: "`r format(Sys.time(), '%B %d, %Y')`"
+date: "March 16, 2019"
 highlighter: prettify
 assets:
   css:
@@ -44,11 +44,14 @@ h5 {
 # Use this R-Chunk to load your libraries!
 library(mosaic)
 library(tidyverse)
+library(DT)
 ```
 
 ```{r load_data, include=FALSE}
 # Use this R-Chunk to load your datasets!
+movies <- read.csv("../../Google Drive/School/Winter 2018/CIT 381/CIT 381 - GroupWork/Unit 2/Data/ReviewsWithSentiment.csv")
 
+table_movies <- movies %>% select(MovieTitle, ReviewDate, ReviewDay, ReviewYear, ReviewMonth, ReviewTextFixed, Sentiment.sentiment, SentimentType)
 ```
 
 ## Our Project {.tabset .tabset-fade .tabset-pill}
@@ -272,5 +275,17 @@ Something interesting here is that we see a consistant uptick in sentiment from 
 #### Profiling Examples
 
 #### Document/Explanation
+
+### Data
+
+Here is the clean data we used to generate the graphs in this document. 
+
+```{r}
+table_movies %>% 
+  kableExtra::kable() %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+
 
 
