@@ -270,6 +270,16 @@ For our optimization, we looked further into our datasets to see what improvemen
 
 Something interesting here is that we see a consistant uptick in sentiment from reviews in June and a consistent dip in the end of the year. (See the attached excel sheet for a more detailed chart).
 
+Futhermore, we created some additional charts with user and critic reviews to further understand our data. Here is an example:
+
+![](Photos/Rplot01.jpeg)
+This contains both the critic and user reviews over time. We can see that users are active on commenting on movies much longer after critics are.
+
+
+We also did some charting in excel to see if we could find any other insights in our data.
+
+![](Photos/Forecast-Charts.png)
+
 #### Document/Explanation
 
 We found a lot of interesting aspects from our data. Of which, that it is hard to predict movie sucess based on the reviews of a movie. However, the initial reviews typically indicate if a movie is good or not in the long run. For example, if a movie recieves _generally positive_ reviews during its initial release, then it will typically continue to receive _generally positive_ reviews.
@@ -284,6 +294,7 @@ average_sent %>%
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
 ```
 
+We can compare this with the chart above and see that movies that start with more positive reviews do typically continue to recieve positive reviews. While this is not noteably 'new' information, it is interesting that we can identify such trends from a small subset of data.
 
 
 ### Data
