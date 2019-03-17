@@ -531,6 +531,75 @@ h5 {
 </div>
 <div id="documentexplanation-3" class="section level4">
 <h4>Document/Explanation</h4>
+<p>We found a lot of interesting aspects from our data. Of which, that it is hard to predict movie sucess based on the reviews of a movie. However, the initial reviews typically indicate if a movie is good or not in the long run. For example, if a movie recieves <em>generally positive</em> reviews during its initial release, then it will typically continue to receive <em>generally positive</em> reviews.</p>
+<p>Just using our sentiment score to average out each sentiment, we get the following averages.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">average_sent &lt;-<span class="st"> </span>movies <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(MovieTitle) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">average =</span> <span class="kw">mean</span>(Sentiment.sentiment))
+
+average_sent <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>))</code></pre></div>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+MovieTitle
+</th>
+<th style="text-align:right;">
+average
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+American Pysco
+</td>
+<td style="text-align:right;">
+-0.0018270
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Anacondas
+</td>
+<td style="text-align:right;">
+0.0480736
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DodgeBall
+</td>
+<td style="text-align:right;">
+0.1073100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Polar Express
+</td>
+<td style="text-align:right;">
+0.2092605
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rocky and Bullwinkle
+</td>
+<td style="text-align:right;">
+0.0385189
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wonder Boys
+</td>
+<td style="text-align:right;">
+0.2444837
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="data" class="section level3">

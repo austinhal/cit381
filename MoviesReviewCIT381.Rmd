@@ -270,11 +270,25 @@ For our optimization, we looked further into our datasets to see what improvemen
 
 Something interesting here is that we see a consistant uptick in sentiment from reviews in June and a consistent dip in the end of the year. (See the attached excel sheet for a more detailed chart).
 
-
-
 #### Profiling Examples
 
+
+
 #### Document/Explanation
+
+We found a lot of interesting aspects from our data. Of which, that it is hard to predict movie sucess based on the reviews of a movie. However, the initial reviews typically indicate if a movie is good or not in the long run. For example, if a movie recieves _generally positive_ reviews during its initial release, then it will typically continue to receive _generally positive_ reviews.
+
+Just using our sentiment score to average out each sentiment, we get the following averages.
+
+```{r}
+average_sent <- movies %>% group_by(MovieTitle) %>% summarise(average = mean(Sentiment.sentiment))
+
+average_sent %>% 
+  kableExtra::kable() %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+
 
 ### Data
 
