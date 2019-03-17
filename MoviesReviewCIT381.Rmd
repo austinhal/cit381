@@ -197,9 +197,13 @@ All documentation is contained within this docuement.
 
 Using new tools is a challenge, we discovered the following when using our analysis tool to run our reports.
 
-* __R:__ It is really good at creating charts and running functions, but not everyone on our team knew how to use it and it made explaining parts of the tool difficult.
+* __R:__ 
+    - _Pros:_ It is really good at creating charts and running functions.
+    - _Cons:_ but not everyone on our team knew how to use it and it made explaining parts of the tool difficult.
 
-* __Excel:__ 
+* __Excel:__
+    - _Pros:_ It is easy to use for a majority of applications. It was covered in class extensively and used for many of the projects. Our team had a solid understanding of how it works and how to do our analysis in it.
+    - _Cons:_ Not as powerful as other software (i.e. Extra steps required, additional add-ons, etc). Has limits in the types of charts it can create.
 
 #### Patterns - Outlier - Visualization
 
