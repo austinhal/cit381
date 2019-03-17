@@ -189,9 +189,11 @@ All documentation is contained within this docuement.
 
 #### Project Update
 
-
+We have completed the cleaning of our document and are moving on to creating some visualizations, finding patterns and/or outliers.
 
 #### Deviations
+
+We had to make some modifications to what type of reviews we were looking for in order to find more relevant reviews to what we were looking for. For example, we decided that, in addition to critic reviews, we also needed to pull user reviews to make sure that we were fully analyzing the sentiment of the movie and not just from one, potentially biased, side. 
 
 #### Tool Learning
 
@@ -206,6 +208,33 @@ Using new tools is a challenge, we discovered the following when using our analy
     - _Cons:_ Not as powerful as other software (i.e. Extra steps required, additional add-ons, etc). Has limits in the types of charts it can create.
 
 #### Patterns - Outlier - Visualization
+
+__Foster__
+
+In this visual, we are looking for patterns in when the reviews were entered.  Trying to understand if time of year influenced number of reviews
+
+![](Photos/screen.png)
+
+<br>
+This visual, made in R, looks for the same pattern as above - when were reviews entered.
+
+![](Photos/screen1.png)
+
+<br> 
+This chart helps see what reviews were negative and which were positive.
+
+![](Photos/screen4.png)
+
+__Austin__
+
+When looking at the day a review was left, does the day of the week make a difference? It looks like most critics get there reviews out fairly quick, the Saturday the movie was released. 
+
+![](Photos/screen2.png)
+
+For the second visualization, I wanted to see the reviews stacked on top of each other. So This groups the movie by year and shows the total number of reviews by year and which ones were bad and which ones were good.
+
+![](Photos/screen3.png)
+
 
 #### Profiling Examples
 
