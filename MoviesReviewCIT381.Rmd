@@ -43,7 +43,7 @@ h5 {
 ```{r load_library, include=FALSE}
 # Use this R-Chunk to load your libraries!
 library(mosaic)
-
+library(tidyverse)
 ```
 
 ```{r load_data, include=FALSE}
@@ -179,7 +179,7 @@ From this week, we performed a lot a cleaning on our data. We formatted the date
 
 #### Cleaning Methods
 
-We used excel to clean the majority of our data. 
+We used excel to clean the majority of our data. We also used functions in R to clean our data as well. See the "Data" tab to see a what our data looked like after being cleaned.
 
 #### Document/Explanation
 
@@ -235,20 +235,39 @@ For the second visualization, I wanted to see the reviews stacked on top of each
 
 ![](Photos/screen3.png)
 
+__Gui__
 
-#### Profiling Examples
+It is fun to look at the data.  Visuals help identify areas to drill into.  There are more questions after looking at the visuals than there were before.  More digging to do!
 
 #### Document/Explanation
+
+* There was a lot of overlapping travelling which made it difficult to coordinate times with the members during this week. 
+
+* Learning new tools also proved to be fairly challenging as we began to learn them. It was helpful to have a team member who was familiar to use the tool. It made getting deliverables done more efficient.
 
 ### Week 10
 
 #### Project Update
 
+We are looking at optimizing our data sets and performing some forecasting to our analysis as well. See the attached spreadsheet for our forecasting example.
+
 #### Deviations
+
+None for this section.
 
 #### Tool Learning
 
+We used R more in depth this week. We wanted to recreate some of the cleaning, visualization, and reporting methods that we had used in excel, but in R, to see if we could change how we did our processes in order to make our project run smoother or faster. We found that R is a powerful tool, but can also be complicated. There is a learning curve to it, but it can do all of what excel can do and ususally a lot quicker.
+
 #### Optimization  - Forecasting - Predicting Method
+
+For our optimization, we looked further into our datasets to see what improvements we could make to make our data tell more about the reviews we were seeing. We discovered a lot of interesing things in our dataset, particularly, seasonality. Take a look at a screenshot exerpt below from our forecast:
+
+![](Photos/season.png)
+
+Something interesting here is that we see a consistant uptick in sentiment from reviews in June and a consistent dip in the end of the year. (See the attached excel sheet for a more detailed chart).
+
+
 
 #### Profiling Examples
 
