@@ -1,0 +1,42 @@
+---
+title: "Learning Machine Learning"
+author: "Austin Halvorsen"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    theme: flatly
+    highlight: tango
+    code_folding: hide
+---
+
+```{r load_library, include=FALSE}
+# Use this R-Chunk to load your libraries!
+library(mosaic)
+
+```
+
+```{r load_data, include=FALSE}
+# Use this R-Chunk to load your datasets!
+
+```
+
+## Research Project: Deliverable {.tabset .tabset-fade .tabset-pills}
+
+This project is a self research project for Business Intelligence and Analytics at Brigham Young Univerity - Idaho. The focus of this project has three parts:
+
+1. Introduce Machine Learning and what it is
+2. Give an example of machine learning on a sample dataset
+3. Summarise my findings and share major learning points
+
+Follow through the project using the tabs below. Also, feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/ahalvo/) and follow me on [GitHub](http://www.github.com/austinhal)
+
+### Project Introduction
+
+
+
+### ML Example
+
+
+### Conclusion
+
+

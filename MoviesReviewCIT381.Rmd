@@ -264,7 +264,30 @@ We used R more in depth this week. We wanted to recreate some of the cleaning, v
 
 #### Optimization  - Forecasting - Predicting Method
 
+**Foster**
+
+*Research/learn about Optimizing, Forecasting, Predicting*
+
+I chose to try to use R for forecasting/predictions this week.  I re-learned what a time series was and how to create one in R.  Running a prediction is very easy once you have data formatted correctly, but the tool I used was very picky.  I used the Holtwinters prediction function in R.  It required the time series to have two columns names ds and y.
+This week I also learned a lot from Austin.  He helped me with my data in R.
+
+*Optimization, forecasting, or predicting method/example*
+
+I did a prediction model in R using the HoltWinters function.  From it you can see the seasonality on the forecast plot and the predicted plot of the data in the future.  Both plots are included for your viewing pleasure.  I believe we could predict the seasonality of any movies reviews after seeing the forecast and prediction work that I did.
+
+![](Photos/forecast_r1.jpg)
+
+![](Photos/forecast_r2.jpg)
+
+**Guilherme**
+
+*Research/learn about Optimizing, Forecasting, Predicting*
+
 For our optimization, we looked further into our datasets to see what improvements we could make to make our data tell more about the reviews we were seeing. We discovered a lot of interesing things in our dataset, particularly, seasonality. Take a look at a screenshot exerpt below from our forecast:
+
+*Optimization, forecasting, or predicting method/example*
+
+I used the excel to forecast the sentiment analysis we have for the Anaconda dataset. My focus was to learn how to do this analysis and to build it accordingly. First of all, I filtered the critic and users reviews with the sentiment analysis and separate them in a new sheet. I then created the forecast to predict reviews for year of 2019 using the past years reviews.
 
 ![](Photos/season.png)
 
