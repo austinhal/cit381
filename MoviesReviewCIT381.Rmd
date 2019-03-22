@@ -313,6 +313,7 @@ Guilherme- Forecasting is really important. I think it is worth of a deep study 
 *Research/learn about Optimizing, Forecasting, Predicting*
 
 One of the area's that I researched are how can we optimize the way we are storing data for better reporting and analysis. One of the intersting articles I came across gives an overview of some methods used for optimizing forecasts and analysis. It can be found here [(Article)](https://risnews.com/advanced-planning-and-optimization-part-7-forecasting-and-optimization-tools). After reading that article, I decided to dive deeper into some of R's reporting methods. In one of their exerpts, they mention that inaccesible and unusable reports are the first roadblock for many data driven decisions, so I wanted to make sure that our dataset was accesible to anyone looking at the report.
+Something that I learned from my teammates this week was being able to use excel to do some forecasting. It was helpful to see their different viewpoints and thought processes on how to look at the data.
 
 *Optimization, forecasting, or predicting method/example*
 
@@ -365,7 +366,6 @@ We found a lot of interesting aspects from our data. Of which, that it is hard t
 Just using our sentiment score to average out each sentiment, we get the following averages.
 
 ```{r}
-
 average_sent %>% 
   kableExtra::kable() %>% 
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
