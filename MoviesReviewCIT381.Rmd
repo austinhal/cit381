@@ -318,6 +318,12 @@ One of the area's that I researched are how can we optimize the way we are stori
 
 For this example, click the "Data" Tab above to see how the dataset is embedded into this worksheet and available for anyone to view. Another optimization that we did was creating this report document. I wanted to move from a word document to what is referred to as R markdown. This style of report (the one you are reading and using now), makes for a much more readable and professional report that is more flexible to adding in analysis then a word document.
 
+```{r}
+average_sent <- movies %>% group_by(MovieTitle) %>% summarise(average = mean(Sentiment.sentiment))
+
+average_sent
+```
+
 *Make sure to explain any insights you got from doing the method*
 
 R is very powerful and I found myself slightly overwhelmed narrowing down how I wanted to do some reporting and styling. What I discovered was that R makes placing charts, graphs and tables within a document much easier and flexible than other programs, like word. Additionally, you can export your work to others in almost any format you want, making it flexible and accesible.
@@ -325,6 +331,7 @@ R is very powerful and I found myself slightly overwhelmed narrowing down how I 
 *Report on the pros and cons of the tool used for Optimizing, Forecasting, Predicting*
 
 **Pros:** Powerful! It can do anything you want and usually a lot quicker and easier than excel. It has a lot of tools, add ons and packages that make it flexible to any project.
+
 **Cons:** There is a huge learning curve in getting things up and running. Its not just point and click as it is in other programs.
 
 *Record the learning excerpts about Optimizing, Forecasting, Predicting*
@@ -358,7 +365,6 @@ We found a lot of interesting aspects from our data. Of which, that it is hard t
 Just using our sentiment score to average out each sentiment, we get the following averages.
 
 ```{r}
-average_sent <- movies %>% group_by(MovieTitle) %>% summarise(average = mean(Sentiment.sentiment))
 
 average_sent %>% 
   kableExtra::kable() %>% 
