@@ -283,11 +283,59 @@ I did a prediction model in R using the HoltWinters function.  From it you can s
 
 *Research/learn about Optimizing, Forecasting, Predicting*
 
-For our optimization, we looked further into our datasets to see what improvements we could make to make our data tell more about the reviews we were seeing. We discovered a lot of interesing things in our dataset, particularly, seasonality. Take a look at a screenshot exerpt below from our forecast:
+I researched some methods to forecast data using excel. Before the 2006 version it was not so easy to forecast data using excel, but now, there are new methods and functions to assist the user to do the predictions with his dataset. 
 
 *Optimization, forecasting, or predicting method/example*
 
 I used the excel to forecast the sentiment analysis we have for the Anaconda dataset. My focus was to learn how to do this analysis and to build it accordingly. First of all, I filtered the critic and users reviews with the sentiment analysis and separate them in a new sheet. I then created the forecast to predict reviews for year of 2019 using the past years reviews.
+
+![](Photos/forecast_anaconda1.png)
+
+I also used the Forecasting sheet in Data tab function Forecasting. This method was the easiest, since I just needed to prepare the table and click in forecast.
+
+![](Photos/forecast_anaconda2.png)
+
+*Make sure to explain any insights you got from doing the method*
+
+Guilherme- The method is useful. Although there were some tutorials in the internet, it took some time to get the result.
+
+*Report on the pros and cons of the tool used for Optimizing, Forecasting, Predicting*
+
+Guilherme- Pros: Excel was easy to use and there were some tutorials in the internet to help to create the forecasting. It was also nice to see the forecasting sheet analysis working.
+Cons: It was hard to prepare the data with the sentiment analysis. We used R to do the sentiment and excel to do this forecasting.
+
+*Record the learning excerpts about Optimizing, Forecasting, Predicting*
+
+Guilherme- Forecasting is really important. I think it is worth of a deep study and learning with some other tools, like R.
+
+**Austin**
+
+*Research/learn about Optimizing, Forecasting, Predicting*
+
+One of the area's that I researched are how can we optimize the way we are storing data for better reporting and analysis. One of the intersting articles I came across gives an overview of some methods used for optimizing forecasts and analysis. It can be found here [(Article)](https://risnews.com/advanced-planning-and-optimization-part-7-forecasting-and-optimization-tools). After reading that article, I decided to dive deeper into some of R's reporting methods. In one of their exerpts, they mention that inaccesible and unusable reports are the first roadblock for many data driven decisions, so I wanted to make sure that our dataset was accesible to anyone looking at the report.
+
+*Optimization, forecasting, or predicting method/example*
+
+For this example, click the "Data" Tab above to see how the dataset is embedded into this worksheet and available for anyone to view. Another optimization that we did was creating this report document. I wanted to move from a word document to what is referred to as R markdown. This style of report (the one you are reading and using now), makes for a much more readable and professional report that is more flexible to adding in analysis then a word document.
+
+*Make sure to explain any insights you got from doing the method*
+
+R is very powerful and I found myself slightly overwhelmed narrowing down how I wanted to do some reporting and styling. What I discovered was that R makes placing charts, graphs and tables within a document much easier and flexible than other programs, like word. Additionally, you can export your work to others in almost any format you want, making it flexible and accesible.
+
+*Report on the pros and cons of the tool used for Optimizing, Forecasting, Predicting*
+
+**Pros:** Powerful! It can do anything you want and usually a lot quicker and easier than excel. It has a lot of tools, add ons and packages that make it flexible to any project.
+**Cons:** There is a huge learning curve in getting things up and running. Its not just point and click as it is in other programs.
+
+*Record the learning excerpts about Optimizing, Forecasting, Predicting*
+
+Data storage is very important, and needs to be done consistently across teams to make sure you are using valid data and that other people can verify the work that you do.
+
+---
+
+**Group**
+
+For our optimization, we looked further into our datasets to see what improvements we could make to make our data tell more about the reviews we were seeing. We discovered a lot of interesing things in our dataset, particularly, seasonality. Take a look at a screenshot exerpt below from our forecast:
 
 ![](Photos/season.png)
 
