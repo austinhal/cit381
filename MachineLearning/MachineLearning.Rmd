@@ -2,12 +2,26 @@
 title: "Learning Machine Learning"
 author: "Austin Halvorsen"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
+assets:
+  css:
+    - "https://fonts.googleapis.com/css?family=Merriweather|Roboto+Slab"
 output: 
   html_document:
     theme: flatly
     highlight: tango
     code_folding: hide
 ---
+
+<style>
+h4 {
+  color: indianred;
+  font-weigh: bold;
+}
+
+p  {
+  font-family: "Roboto Slab"
+}
+</style>
 
 ```{r load_library, include=FALSE}
 # Use this R-Chunk to load your libraries!
@@ -22,21 +36,52 @@ library(mosaic)
 
 ## Research Project: Deliverable {.tabset .tabset-fade .tabset-pills}
 
-This project is a self research project for Business Intelligence and Analytics at Brigham Young Univerity - Idaho. The focus of this project has three parts:
+This project is a self research project for Business Intelligence and Analytics at Brigham Young University - Idaho. The focus of this project has three parts:
 
 1. Introduce Machine Learning and what it is
 2. Give an example of machine learning on a sample dataset
-3. Summarise my findings and share major learning points
+3. Summarize my findings and share major learning points
 
 Follow through the project using the tabs below. Also, feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/ahalvo/) and follow me on [GitHub](http://www.github.com/austinhal)
 
-### Project Introduction
+### PROJECT INTRODUCTION
+
+#### Machine Learning
+
+So what is Machine Learning exactly? Machine learning is not a brand new concept or idea. And further more, it's been around for quite some time. The first uses of the theology of machine learning can be traced all the way back to work of [Thomas Bayes](http://www-history.mcs.st-andrews.ac.uk/Biographies/Bayes.html) in the late 1700's who can be credited with much of the way that we view statistics and models in the modern era. While his thinking was ahead of his time, he laid groundwork for how we would one day implement complex machine learning models. 
+
+Machine learning is really an arm of artificial intelligence and statistics. Its definition can be simply boiled down to this: "Machine Learning is the field of study that gives computers the capability to learn without being explicitly programmed." [(Geek for Geeks)](https://www.geeksforgeeks.org/machine-learning/). Since the rise of access to computers and the increase of performance of those machines, machine learning has been *racing* ahead in industries and academia at an amazing rate. Over the last century, complex problems like medical diagnosis and detecting threats at airports have been aided with machine learning techniques and technologies.
+
+To break down a little more of what machine learning is, it helps to understand a typical output and how you are telling the computer to behave when faced with data. I'll go over a brief outline here, but there are a myriad of resources available online if you want to dig deeper. The two main schools of thought are the following:
+
+1. Supervised Learning
+2. Unsupervised Learning
+
+These two methods can have several underlying algorithms that will produce the results, but the principles remain the same in either method. In **Supervised Learning**, the computer is given a dataset and then told what the answer is based on the data. For example, if you wanted to see if someone was pregnant, similar to our textbook example, you would feed the computer a set of variables and a field that says the woman is pregnant or not. The computer will *learn* what variables are important and when it see's a new dataset, it will begin to predict which rows of data represent a pregnant woman or not. Cool!
+
+In **Unsupervised Learing**, you are taking a dataset and *not* telling the computer what the desired output is. You let the computer group, or cluster, similarties together and it will determine crucial values and then try to predict an output. This could be used in medical diagnosis where you aren't quite sure what variables are causing a certain disease. The computer can run several versions of the model and give places to start looking for causes to certain diseases. 
+
+There are several statisical approaches to how machine learning can be implemented. Many of which have been reviewed in this course in fact. 
+
+#### So what?
+
+So why has machine learning become so big over the last few years and why should I care? To the average individual, they may never see the influence that machine learning has in their daily lives. Largely due to the fact that machine learning hasn't been able to be used in the scale that it has until computers have had the capability to process that amount of data necessary to make it a useable technology. With computers becoming increasingly capable of performing complex computations quicker and more efficiently than ever before, the boom of machine learning has really taken off completely right by it's side. 
+
+As the world grows, we are faced with complex challenges and questions that require a very precise answer. Often in the form of energy demands and food supply. With the rapid development of countries and urban areas, conventional methods are no longer sufficient enough to tackle such problems and methods, that of Machine Learning, are required to come to an answer.
+
+Moreover, as we make advances in the medical field, machine learning can be used to give more accurate diagnosis of diseases and therefore better treatment of patients. This technology can be used to help find cures for diseases like cancer and AIDS. 
+
+On the flip side, there are some darker aspects of machine learning that people have raised some flag about as well though. Most of them revolve around privacy issues. With these technologies, when you step into public areas, stores are recording customer habits to predict what makes them purchase a product. Street camera's track cars and pedestrians to see if there are accidents happenening or situations that require further action. This information is stored in a database and raises privacy concerns. How safe is this data? Is it regulated to who has access to it? What if this data gets leaked? There are certainly risks to having this information, but do the rewards outweigh the risks? I think so.
+
+#### Application
+
+Now that we have a basic understanding of what machine learning is, I want to do a simple walkthrough of how this would look using a real world dataset. Click on the 'ML EXAMPLE' tab to look at an example of how machine learning would be accomplished in R. 
+
+### ML EXAMPLE
 
 
+### CONCLUSION
 
-### ML Example
-
-
-### Conclusion
+### SOURCES
 
 
