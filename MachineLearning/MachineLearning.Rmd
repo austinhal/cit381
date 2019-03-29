@@ -9,7 +9,7 @@ output:
   html_document:
     theme: flatly
     highlight: tango
-    code_folding: hide
+    code_folding: show
 ---
 
 <style>
@@ -22,17 +22,6 @@ p  {
   font-family: "Roboto Slab"
 }
 </style>
-
-```{r load_library, include=FALSE}
-# Use this R-Chunk to load your libraries!
-library(mosaic)
-
-```
-
-```{r load_data, include=FALSE}
-# Use this R-Chunk to load your datasets!
-
-```
 
 ## Research Project: Deliverable {.tabset .tabset-fade .tabset-pills}
 
@@ -79,8 +68,162 @@ Now that we have a basic understanding of what machine learning is, I want to do
 
 ### ML EXAMPLE
 
+For this example, I want demonstrate all the code that goes into a simple machine learning problem. Machine Learning is not as complex as you might think, and I want to show that through this example of [logistic regression](https://www.statisticssolutions.com/what-is-logistic-regression/), which is a form of [classification](https://en.wikipedia.org/wiki/Statistical_classification). In the document below, I will walk through the three main steps of many machine learning problems. Those steps include:
+
+1. Data Cleaning
+2. Data Exploration
+3. Creating your model
+
+In this example, we will be trying to predict the salary of people based on a dataset of salaries. 
+
+To start, we need to read in a dataset. For this exmaple, I am going to use a salaries dataset. Before I load that into R, I need to load all related libraries that I will be using throughout this document.
+
+```{r load_library, include=TRUE, warning=FALSE, message=FALSE}
+# Load Libraries
+library(tidyverse)  # For data manipulation
+library(Amelia)     # For finding missing values
+library(ggplot2)    # For visualizations
+library(caTools)    # For Machine Learning
+```
+
+Now that those are running, I will load my dataset.
+
+```{r load_data, include=TRUE}
+# Loading Datasets
+sal <- read.csv("adult_sal.csv")
+```
+
+For the reminder of this example, I will not be writing out each minor step, but instead will be leaving comments in the code. If you are unsure of what something does, google it or leave a comment in the discussion board.
+
+#### Data Clean
+
+```{r}
+# Here, I need to remove some columns that won't be used in our analysis
+sal <- select(sal, -X)
+
+# Now, I want to clean some of my categorical columns for my logistic regression. In this case, the type_employer column, since this is a predictor column.
+sal <- sal %>% 
+  mutate(type_employer = case_when(
+    type_employer %in% c("Without-pay", "Never-worked") ~ "Unemployed",
+    type_employer %in% c("Self-emp-inc", "Self-emp-not-inc") ~ "Self-emp",
+    type_employer %in% c("Local-gov", "State-gov") ~ "SL-gov",
+    TRUE ~ as.character(type_employer)
+  ))
+
+# Combining Marital Status
+sal <- sal %>% 
+  mutate(marital = case_when(
+    marital %in% c("Separated", "Divorced", "Widowed") ~ "Not-married",
+    marital %in% c("Never-married") ~ "Never-married",
+    marital %in% c("Married-AF-spouse", "Married-civ-spouse", "Married-spouse-absent") ~ "Married",
+    TRUE ~ as.character(marital)
+  ))
+
+# Combining County into new column region
+sal <- sal %>% 
+  mutate(region = case_when(
+    country %in% c("China", "Hong", "India", "Iran", "Cambodia", "Japan", "Laos", "Philippines", "Vietnam", "Taiwan", "Thailand") ~ "Asia",
+    country %in% c("Canada", "United-States", "Puerto-Rico") ~ "North America",
+    country %in% c("England", "France", "Germany", "Greece", "Holand-Netherlands", "Hungary", "Ireland", "Italy", "Poland", "Portugal", "Scotland", "Yugoslavia") ~ "Europe",
+    country %in% c("Columbia", "Cuba", "Dominican-Republic", "Ecuador", "El-Salvador", "Guatemala", "Haiti", "Honduras", "Mexico", "Nicaragua", "Outlying-US(Guam-USVI-etc)", "Peru", "Jamaica", "Trinadad&Tobago") ~ "Latin-South America",
+    country %in% c("South", "?") ~ "Other",
+    TRUE ~ as.character(country)
+  )) 
+
+sal <- sal %>% 
+  mutate(hour_week = case_when(
+    hr_per_week < 40 ~ "<40",
+    hr_per_week == 40 ~ "40",
+    hr_per_week > 40 ~ ">40"
+  )) 
+
+# Drop columns we won't use in our analysis
+sal <- select(sal, -c(country, hr_per_week))
+
+```
+
+Now that we have prepped our data, we need to see where we have missing values and where we need to add, or impute, values for those columns. Each dataset will have it's own logical way of imputing missing values, like mean, mode, or median, so take into consideration what you data looks like before filling in your data.
+
+```{r fig.width=8}
+# First, we need to convert the '?' data into true missing values
+sal[sal=='?'] <- NA
+
+# Refactorize editted columns 
+sal$type_employer <- sapply(sal$type_employer, factor) 
+sal$country <- sapply(sal$country, factor)
+sal$marital <- sapply(sal$marital, factor)
+sal$hour_week <- sapply(sal$hour_week, factor)
+
+# Now, we want to visiualize the missing values using the Amelia library
+missmap(sal, y.at = c(1), y.labels = c(" "), col=c("red", "black"))
+```
+
+Looking at our missingness map, we can see that we have a 1% missing amount of information. We will need to deal with those data points into our dataset so that we are using a complete dataset. In our case, we need to find or drop values for occupation and the type of employer (type_employer).
+
+```{r}
+# Since we cannot find the "average" occupation or employer, we are just going to discard those observations all together.
+
+sal <- na.omit(sal) # This will drop any rows with NA data
+
+# Now lets remake our missingness map
+missmap(sal, y.at = c(1), y.labels = c(" "), col=c("red", "black"))
+```
+
+Now, we are going to dig into some visiualization of our data. Since we are in the exploratory phase of our data, we need to see a few more things of our data to make sure we understand what we are trying to achieve with machine learning.
+
+#### Data Exploration 
+
+```{r}
+ggplot(sal, aes(age)) +
+  geom_histogram(aes(fill=income), color="black", binwidth = 1) +
+  theme_bw()
+
+ggplot(sal, aes(hour_week)) + 
+  geom_bar(aes(fill=income), stat="count") + 
+  theme_bw()
+
+ggplot(sal, aes(region)) +
+  geom_bar(aes(fill=income), color='black') +
+  theme_bw()
+```
+
+#### Machine Learning with Logistic Regression
+
+To begin, we need to split our data set into two group - a training set and a test set. This is an example of __supervised__ learning where we are feeding our algorithm some data where we know the output. The model will 'learn' this pattern and then when we feed it the test set, we can see how well it performs. What this means is, in the future when we give it new data that hasn't been classified, we will be able to gauge how accurate those predictions will be.
+
+```{r}
+# A seed is a 'random' code in how the computer will pick rows to split for the test and train data
+set.seed(101)
+
+# This line will take a sample on the column we are trying to predict
+sample <- sample.split(sal$income, SplitRatio = 0.7)
+
+# This is our training data
+train <- subset(sal, sample==T)
+
+# This is our test data
+test <- subset(sal, sample==F)
+```
+
+
+```{r}
+# This will be our base model with our training dataset
+model <- glm(income ~ ., family = binomial(link = 'logit'), data=train)
+
+#
+pander::pander(summary(model))
+```
+
+```{r}
+test$predicted.income <- predict(model, newdata = test, type = 'response')
+pander::pander(table(test$income, test$predicted.income > 0.5))
+
+acc <- (6929+1392)/(6929+487+960+1392)
+```
 
 ### CONCLUSION
+
+
 
 ### SOURCES
 
