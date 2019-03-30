@@ -179,21 +179,21 @@ The graphs below help us get an idea of what our data looks like. When we run ou
 ggplot(sal, aes(age)) +
   geom_histogram(aes(fill=income), color="black", binwidth = 1) +
   theme_bw() +
-  labs(main="Peak adult total income at 31",
+  labs(title="Peak adult total income at 31",
        x="Age",
        y="Count")
 
 ggplot(sal, aes(hour_week)) + 
   geom_bar(aes(fill=income), stat="count") + 
   theme_bw() +
-  labs(main="People working more than 40 have larger incomes",
+  labs(title="People working more than 40 have larger incomes",
        x="Hours worked per week",
        y="Count")
 
 ggplot(sal, aes(region)) +
   geom_bar(aes(fill=income), color='black') +
   theme_bw() +
-  labs(main="North America Accounts for most generated income",
+  labs(title="North America Accounts for most generated income",
        x="Region",
        y="Count")
 ```
