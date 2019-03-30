@@ -48,23 +48,23 @@ To break down a little more of what machine learning is, it helps to understand 
 
 These two methods can have several underlying algorithms that will produce the results, but the principles remain the same in either method. In **Supervised Learning**, the computer is given a dataset and then told what the answer is based on the data. For example, if you wanted to see if someone was pregnant, similar to our textbook example, you would feed the computer a set of variables and a field that says the woman is pregnant or not. The computer will *learn* what variables are important and when it see's a new dataset, it will begin to predict which rows of data represent a pregnant woman or not. Cool!
 
-In **Unsupervised Learing**, you are taking a dataset and *not* telling the computer what the desired output is. You let the computer group, or cluster, similarties together and it will determine crucial values and then try to predict an output. This could be used in medical diagnosis where you aren't quite sure what variables are causing a certain disease. The computer can run several versions of the model and give places to start looking for causes to certain diseases. 
+In **Unsupervised Learing**, you are taking a dataset and *not* telling the computer what the desired output is. You let the computer group, or cluster, similarities together and it will determine crucial values and then try to predict an output. This could be used in medical diagnosis where you aren't quite sure what variables are causing a certain disease. The computer can run several versions of the model and give places to start looking for causes to certain diseases. 
 
-There are several statisical approaches to how machine learning can be implemented. Many of which have been reviewed in this course in fact. 
+There are several statistical approaches to how machine learning can be implemented. Many of which have been reviewed in this course in fact. 
 
 #### So what?
 
-So why has machine learning become so big over the last few years and why should I care? To the average individual, they may never see the influence that machine learning has in their daily lives. Largely due to the fact that machine learning hasn't been able to be used in the scale that it has until computers have had the capability to process that amount of data necessary to make it a useable technology. With computers becoming increasingly capable of performing complex computations quicker and more efficiently than ever before, the boom of machine learning has really taken off completely right by it's side. 
+So why has machine learning become so big over the last few years and why should I care? To the average individual, they may never see the influence that machine learning has in their daily lives. Largely due to the fact that machine learning hasn't been able to be used in the scale that it has until computers have had the capability to process that amount of data necessary to make it a usable technology. With computers becoming increasingly capable of performing complex computations quicker and more efficiently than ever before, the boom of machine learning has really taken off completely right by it's side. 
 
 As the world grows, we are faced with complex challenges and questions that require a very precise answer. Often in the form of energy demands and food supply. With the rapid development of countries and urban areas, conventional methods are no longer sufficient enough to tackle such problems and methods, that of Machine Learning, are required to come to an answer.
 
 Moreover, as we make advances in the medical field, machine learning can be used to give more accurate diagnosis of diseases and therefore better treatment of patients. This technology can be used to help find cures for diseases like cancer and AIDS. 
 
-On the flip side, there are some darker aspects of machine learning that people have raised some flag about as well though. Most of them revolve around privacy issues. With these technologies, when you step into public areas, stores are recording customer habits to predict what makes them purchase a product. Street camera's track cars and pedestrians to see if there are accidents happenening or situations that require further action. This information is stored in a database and raises privacy concerns. How safe is this data? Is it regulated to who has access to it? What if this data gets leaked? There are certainly risks to having this information, but do the rewards outweigh the risks? I think so.
+On the flip side, there are some darker aspects of machine learning that people have raised some flag about as well though. Most of them revolve around privacy issues. With these technologies, when you step into public areas, stores are recording customer habits to predict what makes them purchase a product. Street camera's track cars and pedestrians to see if there are accidents happening or situations that require further action. This information is stored in a database and raises privacy concerns. How safe is this data? Is it regulated to who has access to it? What if this data gets leaked? There are certainly risks to having this information, but do the rewards outweigh the risks? I think so.
 
 #### Application
 
-Now that we have a basic understanding of what machine learning is, I want to do a simple walkthrough of how this would look using a real world dataset. Click on the 'ML EXAMPLE' tab to look at an example of how machine learning would be accomplished in R. 
+Now that we have a basic understanding of what machine learning is, I want to do a simple walk through of how this would look using a real world dataset. Click on the 'ML EXAMPLE' tab to look at an example of how machine learning would be accomplished in R. 
 
 ### ML EXAMPLE
 
@@ -76,7 +76,7 @@ For this example, I want demonstrate all the code that goes into a simple machin
 
 In this example, we will be trying to predict the salary of people based on a dataset of salaries. 
 
-To start, we need to read in a dataset. For this exmaple, I am going to use a salaries dataset. Before I load that into R, I need to load all related libraries that I will be using throughout this document.
+To start, we need to read in a dataset. For this example, I am going to use a salaries dataset. Before I load that into R, I need to load all related libraries that I will be using throughout this document.
 
 ```{r load_library, include=TRUE, warning=FALSE, message=FALSE}
 # Load Libraries
@@ -93,7 +93,7 @@ Now that those are running, I will load my dataset.
 sal <- read.csv("adult_sal.csv")
 ```
 
-For the reminder of this example, I will not be writing out each minor step, but instead will be leaving comments in the code. If you are unsure of what something does, google it or leave a comment in the discussion board.
+For the reminder of this example, I will not be writing out each minor step, but instead will be leaving comments in the code. If you are unsure of what something does, Google it or leave a comment in the discussion board.
 
 #### Data Clean
 
@@ -149,10 +149,10 @@ Now that we have prepped our data, we need to see where we have missing values a
 sal[sal=='?'] <- NA
 
 # Refactorize editted columns 
-sal$type_employer <- sapply(sal$type_employer, factor) 
-sal$country <- sapply(sal$country, factor)
-sal$marital <- sapply(sal$marital, factor)
-sal$hour_week <- sapply(sal$hour_week, factor)
+# sal$type_employer <- sapply(sal$type_employer, factor) 
+# sal$country <- sapply(sal$country, factor)
+# sal$marital <- sapply(sal$marital, factor)
+# sal$hour_week <- sapply(sal$hour_week, factor)
 
 # Now, we want to visiualize the missing values using the Amelia library
 missmap(sal, y.at = c(1), y.labels = c(" "), col=c("red", "black"))
@@ -169,29 +169,40 @@ sal <- na.omit(sal) # This will drop any rows with NA data
 missmap(sal, y.at = c(1), y.labels = c(" "), col=c("red", "black"))
 ```
 
-Now, we are going to dig into some visiualization of our data. Since we are in the exploratory phase of our data, we need to see a few more things of our data to make sure we understand what we are trying to achieve with machine learning.
+Now, we are going to dig into some visualization of our data. Since we are in the exploratory phase of our data, we need to see a few more things of our data to make sure we understand what we are trying to achieve with machine learning.
 
 #### Data Exploration 
+
+The graphs below help us get an idea of what our data looks like. When we run our model, we can use the graphs to help us predict in our own minds what the model should look like. This can also be a good indicator of trouble spots to look at.
 
 ```{r}
 ggplot(sal, aes(age)) +
   geom_histogram(aes(fill=income), color="black", binwidth = 1) +
-  theme_bw()
+  theme_bw() +
+  labs(main="Peak adult total income at 31",
+       x="Age",
+       y="Count")
 
 ggplot(sal, aes(hour_week)) + 
   geom_bar(aes(fill=income), stat="count") + 
-  theme_bw()
+  theme_bw() +
+  labs(main="People working more than 40 have larger incomes",
+       x="Hours worked per week",
+       y="Count")
 
 ggplot(sal, aes(region)) +
   geom_bar(aes(fill=income), color='black') +
-  theme_bw()
+  theme_bw() +
+  labs(main="North America Accounts for most generated income",
+       x="Region",
+       y="Count")
 ```
 
 #### Machine Learning with Logistic Regression
 
 To begin, we need to split our data set into two group - a training set and a test set. This is an example of __supervised__ learning where we are feeding our algorithm some data where we know the output. The model will 'learn' this pattern and then when we feed it the test set, we can see how well it performs. What this means is, in the future when we give it new data that hasn't been classified, we will be able to gauge how accurate those predictions will be.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # A seed is a 'random' code in how the computer will pick rows to split for the test and train data
 set.seed(101)
 
@@ -205,26 +216,54 @@ train <- subset(sal, sample==T)
 test <- subset(sal, sample==F)
 ```
 
+This is really the heart of machine learning here. We are now "training" a model with the test data that we just made. We run this model (a general linear model or `glm`) and then we will output the results.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # This will be our base model with our training dataset
 model <- glm(income ~ ., family = binomial(link = 'logit'), data=train)
 
+```
+
+Now, this output is going to be long, and you don't need to understand all of it, but we are basically looking for significant variables. These could be factors that influence our end result. In the column labelled `Pr(>|z|`, where any number is less than .05, we consider that significant.
+
+```{r message=FALSE, warning=FALSE}
 #
 pander::pander(summary(model))
 ```
 
-```{r}
+
+Now that we have our base model, we are going to use that with the test data and see how accurate our model was. The table is called a **confusion matrix**. It essentially identifies which of the results were accurately. (Head over to the sources tab for some more information on confusion matrices.) 
+
+With our table we see that of our model, it misclassified 888 people making more than 50k and 547 people making less than 50k. This misses are normal in models like this and the goal is increase their accuracy as much as possible.
+
+```{r message=FALSE, warning=FALSE}
 test$predicted.income <- predict(model, newdata = test, type = 'response')
 pander::pander(table(test$income, test$predicted.income > 0.5))
+```
 
+This give us an accuracy of about 85%. So this model isn't terribly good at being accurate, but it does help paint a picture of how machine learning works!
+
+```{r}
 acc <- (6929+1392)/(6929+487+960+1392)
+print(acc)
 ```
 
 ### CONCLUSION
 
+Thank you for going through my Machine Learning project! I hope that you were able to follow along and get a brief understanding of how machine learning works and some practical use cases. Machine Learning, and Artificial Intelligence have come a long way in the recent decade and there are possibities opening up every day as to what they are capable of doing.
 
+The best part about learning learning is that you don't need to have a lot experience to start, you just need to jump in and start playing around with some data! It is amazing the things that you can discover and create with what is already at your fingertips!
 
 ### SOURCES
 
+* Machine Learning Explained:Kmeans, *Antoine Guillot*, 2017 [(Link)](http://enhancedatascience.com/2017/10/24/machine-learning-explained-kmeans/)
 
+* What is Machine Learning? A definition, *Expert System*,  [(Link)](https://www.expertsystem.com/machine-learning-definition/)
+
+* Machine Learning, *Geek for Geeks* [(Link)](https://www.geeksforgeeks.org/machine-learning/)
+
+* Confusion Matrix, *Geek for Geeks* [(Link)](https://www.geeksforgeeks.org/confusion-matrix-machine-learning/)
+
+* R, The Progamming Language [(Link)](https://www.r-project.org/about.html)
+
+* Learn R Programming [(Link)](https://www.datamentor.io/r-programming/)
