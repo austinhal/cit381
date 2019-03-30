@@ -75,6 +75,18 @@ For example, if a person wins playing rock, they are more likely to throw rock. 
 
 This is a very elementary approach to this problem and their are countless mathematical approaches on how to increase the chance of the computer winning. In efforts to keep this inside of my realm of programming, we are going to keep is simple using those two rules.
 
+#### Requirement 3
+
+For this model, the game with be simple and statistically based. It will make decisions intelligently and try to predict players moves based on logic that is programmed in based on the rules given above. Something that I was able to learn throughout my research is that it is best to give simple rules and then let the computer figure it out through trial and error. I am not sure if my programming is quite there, but I am going to see what I can do!
+
+#### Sources
+
+[Win at Rock-Paper-Scissors Every Time, With Math](https://motherboard.vice.com/en_us/article/gvym4x/game-theory-rock-paper-scissors)
+
+[Why Winning in Rock-Paper-Scissors (and in Life) Isn’t Everything](https://www.quantamagazine.org/the-game-theory-math-behind-rock-paper-scissors-20180402/)
+
+[Game Theory 101](http://gametheory101.com/courses/game-theory-101/rock-paper-scissors/)
+
 ### Week 13
 
 #### Requirement 1
