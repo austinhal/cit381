@@ -1,0 +1,88 @@
+---
+title: "Game Theory"
+author: "Austin Halvorsen"
+date: "3/29/2019"
+assets:
+  css:
+    - "https://fonts.googleapis.com/css?family=Merriweather|Roboto+Slab"
+output: 
+  html_document:
+    theme: flatly
+    highlight: tango
+    code_folding: show
+---
+
+<style>
+
+h4 {
+  color: #F39C12;
+  font-weigh: bold;
+}
+
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Rock Paper Scissors {.tabset .tabset-fade .tabset-pills}
+
+In this simple game, each player takes their turn 'throwing' either a rock (closed fist), paper (open hand), or scissors (two fingers extended). Now, I'm sure you are all familiar with the rules of the game, but we all know that rock beats scissors, scissors wins paper, and (*somehow*) paper covers rock.
+
+Now, right off the bat, it would seem that this game is all strictly random based. Each person has a 33% chance of winning, losing, or being tied with their opponent. So how could we make a smart AI that can out wit random chance?
+
+### Week 12
+
+#### Requirement 1
+
+**Determine all possible choices that your AI will need to make while playing your selected game.**
+
+In the game, there are really only three moves that a computer could make at any given time, and since they are only thrown at random, the computer could only choose rock, paper, or scissors.
+
+What the computer needs to understand is what they need to do in order to win. So we tell the AI that:
+
+* Rock > Scissors
+* Scissors > Paper
+* Paper > Rock
+
+This lays the foundation for how to win while playing the game, but we also need to explain all the combinations as well.
+
+For this we have:
+
+| Player Move 	| Result 	  | AI Move   	|
+|-------------	|----------	|-----------	|
+| Rock        	| Draw   	  | Rock      	|
+| Paper       	| ---W---> 	| Scissors  	|
+| Scissors    	| <---W--- 	| Paper     	|
+| Rock        	| ---W---> 	| Paper     	|
+| Paper       	| <---W--- 	| Rock      	|
+| Scissors    	| Draw   	  | Scissors  	|
+| Rock        	| <---W--- 	| Scissors  	|
+| Paper       	| Draw   	  | Paper     	|
+| Scissors    	| --W---> 	| Rock      	|
+
+With this table in mind, we can see that the computer has $\frac39$ chances of a draw, $\frac39$ chances at a win, and $\frac39$ chances at a loss.
+
+The AI will have to account and adjust for these probabilities as it plays the game.
+
+#### Requirement 2
+
+**Understand the logic or calculations that your AI will need to preform to make the best decisions possible for each choice it is presented with.**
+
+So if the game is based more in random chance than strategy, is there a way to create an AI that can outsmart a person? Well, humans are rather [predictably irrational](https://www.amazon.com/Predictably-Irrational-Revised-Expanded-Decisions/dp/0061353248) and tend to repeat things that bring success or change patterns that cause them to lose. In essence, we need to make an AI that exploits these tendencies in humans to try and beat them. 
+
+For example, if a person wins playing rock, they are more likely to throw rock. We need to tell our AI then, to play paper to beat rock. On the other end, lets say a person lost by playing scissors, meaning our AI just played rock. Chances are that our person is going to play paper so we need to play scissors. 
+
+This is a very elementary approach to this problem and their are countless mathematical approaches on how to increase the chance of the computer winning. In efforts to keep this inside of my realm of programming, we are going to keep is simple using those two rules.
+
+### Week 13
+
+#### Requirement 1
+
+**Begin programming your AI. There is no criteria on what language or tool you use to develop in.**
+
+### Week 14 
+
+#### Requirement 1
+
+**Finish up your AI model.**
