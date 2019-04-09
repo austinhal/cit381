@@ -93,6 +93,45 @@ For this model, the game with be simple and statistically based. It will make de
 
 **Begin programming your AI. There is no criteria on what language or tool you use to develop in.**
 
+For this example, we need to program the computer to what makes a win, tie or loss. In the following segment of code, we will
+
+```{r message=FALSE, warning=FALSE}
+rps = function(move){
+  options = c("rock", "paper", "scissors")
+  ai_move = sample(options, size = 1)
+  
+  if(move == "rock" & ai_move == "rock"){
+    names(ai_move) = "tie"
+  }else
+    if(move == "rock" & ai_move == "scissors"){
+      names(ai_move) = "loss"
+    }else
+      if(move == "rock" & ai_move == "paper"){
+        names(ai_move) = "win"
+      }else
+        if(move == "paper" & ai_move == "paper"){
+          names(ai_move) = "tie"
+        }else
+          if(move == "paper" & ai_move == "scissors"){
+            names(ai_move) = "win"
+          }else
+            if(move == "paper" & ai_move == "rock"){
+              names(ai_move) = "loss"
+            }else
+              if(move == "scissors" & ai_move == "scissors"){
+                names(ai_move) = "tie"
+              }else
+                if(move == "scissors" & ai_move == "rock"){
+                  names(ai_move) = "win"
+                }else
+                  if(move == "scissors" & ai_move == "paper"){
+                    names(ai_move) = "loss"
+                  }
+  return(ai_move)
+}
+```
+
+
 ### Week 14 
 
 #### Requirement 1
