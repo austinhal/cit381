@@ -93,7 +93,7 @@ For this model, the game with be simple and statistically based. It will make de
 
 **Begin programming your AI. There is no criteria on what language or tool you use to develop in.**
 
-For this example, we need to program the computer to what makes a win, tie or loss. In the following segment of code, we will
+For this example, we need to program the computer to what makes a win, tie or loss. In the following segment of code, we will list all nine potential moves for both sides and all the possible outcomes. This will help us establish some strategy and models that we can give the computer to help it make different decisions during gameplay.
 
 ```{r message=FALSE, warning=FALSE}
 rps = function(move){
@@ -129,6 +129,36 @@ rps = function(move){
                   }
   return(ai_move)
 }
+```
+
+With the basic rules programmed, the next step is to create a vector of human moves that would represent someone randomly picking between the three options.
+
+To do this, R has a function that will sample from a selection, in our case, the moves, and then add that sample to a new vector.
+
+```{r}
+moves = c("rock", "paper", "scissors")
+humanMoves = sample(moves, size = 100, replace = TRUE)
+
+pander::pander(table(humanMoves))
+```
+
+Our sample seems to lean towards one option of the others, it will be interesting to see if our ai will be able to hone in on this pattern and beat the human moves.
+
+The next function 
+
+```{r}
+rps.random=function(move){
+  ai_moves = vector("character")
+  
+  for(i in 1:length(move)){
+    ai_move=rps(move[i])
+    ai_moves = append(ai_moves,ai_move, after = length(ai_moves))
+  }
+  winrate.random = mean(names(ai_moves) == "win")
+  return(winrate.random)
+  #return(ai_moves)
+}
+results.random = rps.random(humanMoves)
 ```
 
 

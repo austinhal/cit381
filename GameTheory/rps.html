@@ -373,7 +373,7 @@ h4 {
 <div id="requirement-1-1" class="section level4">
 <h4>Requirement 1</h4>
 <p><strong>Begin programming your AI. There is no criteria on what language or tool you use to develop in.</strong></p>
-<p>For this example, we need to program the computer to what makes a win, tie or loss. In the following segment of code, we will</p>
+<p>For this example, we need to program the computer to what makes a win, tie or loss. In the following segment of code, we will list all nine potential moves for both sides and all the possible outcomes. This will help us establish some strategy and models that we can give the computer to help it make different decisions during gameplay.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rps =<span class="st"> </span><span class="cf">function</span>(move){
   options =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;rock&quot;</span>, <span class="st">&quot;paper&quot;</span>, <span class="st">&quot;scissors&quot;</span>)
   ai_move =<span class="st"> </span><span class="kw">sample</span>(options, <span class="dt">size =</span> <span class="dv">1</span>)
@@ -407,6 +407,47 @@ h4 {
                   }
   <span class="kw">return</span>(ai_move)
 }</code></pre></div>
+<p>With the basic rules programmed, the next step is to create a vector of human moves that would represent someone randomly picking between the three options.</p>
+<p>To do this, R has a function that will sample from a selection, in our case, the moves, and then add that sample to a new vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">moves =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;rock&quot;</span>, <span class="st">&quot;paper&quot;</span>, <span class="st">&quot;scissors&quot;</span>)
+humanMoves =<span class="st"> </span><span class="kw">sample</span>(moves, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+
+pander<span class="op">::</span><span class="kw">pander</span>(<span class="kw">table</span>(humanMoves))</code></pre></div>
+<table style="width:35%;">
+<colgroup>
+<col width="11%"></col>
+<col width="9%"></col>
+<col width="13%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">paper</th>
+<th align="center">rock</th>
+<th align="center">scissors</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">33</td>
+<td align="center">38</td>
+<td align="center">29</td>
+</tr>
+</tbody>
+</table>
+<p>Our sample seems to lean towards one option of the others, it will be interesting to see if our ai will be able to hone in on this pattern and beat the human moves.</p>
+<p>The next function</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rps.random=<span class="cf">function</span>(move){
+  ai_moves =<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>)
+  
+  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(move)){
+    ai_move=<span class="kw">rps</span>(move[i])
+    ai_moves =<span class="st"> </span><span class="kw">append</span>(ai_moves,ai_move, <span class="dt">after =</span> <span class="kw">length</span>(ai_moves))
+  }
+  winrate.random =<span class="st"> </span><span class="kw">mean</span>(<span class="kw">names</span>(ai_moves) <span class="op">==</span><span class="st"> &quot;win&quot;</span>)
+  <span class="kw">return</span>(winrate.random)
+  <span class="co">#return(ai_moves)</span>
+}
+results.random =<span class="st"> </span><span class="kw">rps.random</span>(humanMoves)</code></pre></div>
 </div>
 </div>
 <div id="week-14" class="section level3">
