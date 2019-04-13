@@ -146,7 +146,7 @@ Our sample seems to lean towards one option of the others, it will be interestin
 
 The next function 
 
-```{r}
+```{r warning=FALSE}
 rps.random=function(move){
   ai_moves = vector("character")
   
@@ -167,3 +167,108 @@ results.random = rps.random(humanMoves)
 #### Requirement 1
 
 **Finish up your AI model.**
+
+A popular method to win at rock paper scissors is use the move your oppenent just used to beat you, then continually use the move you lost against or the move you used to win, to beat your opponent. In this method I want to implement, I want to use memory to detect some patterns in the human (random moves) to see if we can make the computer smarter by identifying these patterns. Follow along in the comments to see what each line of code does.
+
+```{r warning=FALSE}
+# For this function, we are going to see if the AI can predict the move of the human based on the humans previous moves.
+
+rps.win = function(priormove){
+  
+  if(priormove == "rock"){
+    aiMove = "paper"
+  }else
+    if(priormove == "paper"){
+      aiMove = "scissors"
+    }else
+      if(priormove == "scissors"){
+        aiMove = "rock"
+      }
+  return(aiMove)
+}
+
+# We are going to restablish the rules of the game to make sure that we are using the correct logic
+
+rpsSmart = function(AiMove,move){
+  
+  if(identical(AiMove,move)){
+    result.smart = "tie"
+  }else
+    if(AiMove == "rock" & move == "paper" | AiMove == "paper" & move == "scissors" | AiMove == "scissors" & move == "rock"){
+      result.smart = "loss"
+    }else{
+      result.smart = "win"
+    }
+  return(result.smart)
+}
+
+rps.smart = function(move){
+  AiSmartMoves = vector("character")
+  thelength = length(move)
+  
+  # Since there is no 'memory' we are using going to have the computer throw random moves first ten moves
+  for(i in 1:10){
+    
+    AiSmart = rps(move[i])
+    AiSmartMoves = append(AiSmartMoves,
+                          AiSmart, 
+                          after = length(AiSmartMoves))
+  }
+  
+  for(i in 11:thelength){
+    last2human = move[(i-2):(i-1)]
+    
+    showedup = F
+    move.to.beat = ""
+    
+    # Now, we are going to loop 
+    # through the vector to see 
+    # previous human moves for 
+    # the AI to use
+    
+    for(j in 1:(i-3)){
+      testmoves = move[j:j+1]
+      if(testmoves == last2human){
+        showedup = T
+        move.to.beat = move[j+2]
+      }
+    }
+    # If the right move appeared, we will throw the move to beat the move thrown
+    if(showedup == T){
+      AiSmart = rps.win(move.to.beat)
+      names(AiSmart) = rpsSmart(AiSmart,move[i])
+    }else{
+      # Otherwise, we are just going to throw a random move
+      AiSmart = rps(move[i])
+      names(AiSmart) = rpsSmart(AiSmart,move[i])        
+    }
+    AiSmartMoves = append(AiSmartMoves,AiSmart, after = length(AiSmartMoves))
+  }
+  memWinAiRate = mean(names(AiSmartMoves) == "win")
+  return(memWinAiRate)
+}
+
+results.smart = rps.smart(humanMoves)
+```
+
+
+#### Graphing the Win rate
+
+To see if there was an effectiveness in the winrate of these two stragetgies, I have compute the average win percentage for both. Take a look at the chart:
+
+```{r}
+compare.results = c(results.random, results.smart)
+
+barplot(compare.results, col = c("lightgrey", "goldenrod"),
+        names.arg=c("Random", "With Memory"), 
+        xlab="Strategy", ylab="Win Rate", main="Results from the two strategies")
+```
+
+#### Results
+
+Overall, our results are really interesting. We see that the smart memory strategy has an advantage over just random throws, but it would be interesting to compare more models and see if we could make this even more reliable. Obviously, in any game of randomeness, there is always going to be luck involved, but it is interesting to think that there is a way that we could beat the randomness that we see. 
+
+Even more interestingly, occasially we can observe that random throws can beat the memory model. It would be fascinating to to see if those examples could be used to bolster our model and make it even better at beating random games.
+
+Thanks for reading through this report. I hope that it made some sense and you were able to glean some informative things from it!  
+
